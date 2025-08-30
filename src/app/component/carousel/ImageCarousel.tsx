@@ -1,23 +1,9 @@
 'use client';
 import React, { useState, useEffect, useCallback } from 'react';
 import { LuChevronLeft, LuChevronRight } from 'react-icons/lu';
+import { ImageCarouselProps } from './ImageCarouselProps.interface';
 
-interface CarouselImage {
-  src: string;
-  alt: string;
-  title?: string;
-  description?: string;
-}
-
-interface ImageCarouselProps {
-  images: CarouselImage[];
-  autoplayInterval?: number;
-  showDots?: boolean;
-  showArrows?: boolean;
-  className?: string;
-}
-
-export const Carousel: React.FC<ImageCarouselProps> = ({
+export const ImageCarousel: React.FC<ImageCarouselProps> = ({
   images,
   autoplayInterval = 5000,
   showDots = true,

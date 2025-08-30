@@ -1,4 +1,4 @@
-import { Carousel, KidsGiftBoxSection } from '@/app/component';
+import { ImageCarousel, KidsGiftBoxSection } from '@/app/component';
 import { TestimonialSection } from './component/testimonial/Testimonial';
 import Footer from './component/footer/Footer';
 
@@ -45,7 +45,7 @@ export default function Home() {
   return (
     <div className="min-h-screen  p-4 md:p-8">
       <div className="max-w-6xl mx-auto">
-        <Carousel images={sampleImages} />
+        <ImageCarousel images={sampleImages} />
         <KidsGiftBoxSection />
         <TestimonialSection />
         <Footer />

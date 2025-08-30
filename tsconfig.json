@@ -18,6 +18,10 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": "./src",
+    "types": [
+      "jest",
+      "@testing-library/jest-dom"
+    ],
     "plugins": [
       {
         "name": "next"

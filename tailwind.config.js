@@ -7,4 +7,9 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  resolve: {
+    alias: {
+      '@': require('path').resolve(__dirname, 'src'),
+    },
+  },
 };
