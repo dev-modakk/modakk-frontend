@@ -37,7 +37,6 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
     return () => clearInterval(interval);
   }, [isAutoPlaying, autoplayInterval, goToNext]);
 
-
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
       if (event.key === 'ArrowLeft') {
@@ -50,7 +49,6 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
   }, [goToPrevious, goToNext]);
-
 
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchEnd(null);
@@ -93,7 +91,7 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
 
   return (
     <div
-      className={`relative w-full max-w-4xl mx-auto bg-black rounded-lg overflow-hidden shadow-2xl ${className}`}
+      className={`relative w-full max-w-6xl mx-auto bg-black rounded-lg overflow-hidden shadow-2xl ${className}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onTouchStart={handleTouchStart}
@@ -132,7 +130,6 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
           ))}
         </div>
       </div>
-
 
       {showArrows && images.length > 1 && (
         <>
