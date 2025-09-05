@@ -1,3 +1,5 @@
+import { Navigation } from './components';
+import Footer from './components/footer/Footer';
 import './globals.css';
 
 export default function RootLayout({
@@ -13,7 +15,12 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
       </head>
       <body style={{ fontFamily: 'Inter, Arial, Helvetica, sans-serif' }}>
-        {children}
+        <div className="min-h-screen flex flex-col">
+          <Navigation />
+          <main className="flex-1">
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );

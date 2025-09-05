@@ -8,6 +8,10 @@ const navLinks = [
   { href: '/about', label: 'About' },
 ];
 
+const menuItems = [
+  { href: "/baby-gift-boxes", label: "Baby Gift Boxes" },
+  { href: "/kids-gift-boxes", label: "Kids Gift Boxes" }
+];
 export const GiftBoxesDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -60,10 +64,7 @@ export const GiftBoxesDropdown = () => {
     };
   }, []);
 
-  const menuItems = [
-    { href: "/baby-gift-boxes", label: "Baby Gift Boxes" },
-    { href: "/kids-gift-boxes", label: "Kids Gift Boxes" }
-  ];
+
 
   return (
     <div className="flex items-center space-x-8">

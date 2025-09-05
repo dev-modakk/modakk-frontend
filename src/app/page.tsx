@@ -1,8 +1,10 @@
-import { ImageCarousel, KidsGiftBoxSection } from '@/app/component';
-import { TestimonialSection } from './component/testimonial/Testimonial';
-import Footer from './component/footer/Footer';
+
+import { TestimonialSection } from './components/testimonial/Testimonial';
+import Footer from './components/footer/Footer';
 import { Navigation } from '@/app/components';
 import { CAROUSEL_PRODUCT_IMAGES_RESPONSE } from './mocks';
+import { ImageCarousel } from './components/carousel';
+import { KidsGiftBoxSection } from './components/kid-gift-boxes-section';
 
 export default function Home() {
   return (
@@ -20,7 +22,6 @@ export default function Home() {
             backgroundPosition: "0 0, 0 0, 0 0",
           }}
         />
-        <Navigation />
         <div className="relative z-10 p-4 md:p-8">
           <div className="max-w-6xl mx-auto">
             <ImageCarousel images={CAROUSEL_PRODUCT_IMAGES_RESPONSE} />

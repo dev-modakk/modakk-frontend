@@ -4,6 +4,15 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LuSearch, LuClock, LuTrendingUp, LuBookmark, LuPackage } from 'react-icons/lu';
 
+const suggestions: SearchSuggestion[] = [
+  { id: '1', title: 'Baby Gift Boxes', subtitle: 'Popular category', type: 'trending', icon: <LuTrendingUp className="w-4 h-4" /> },
+  { id: '2', title: 'Kids Art Supplies', subtitle: 'Recent search', type: 'recent', icon: <LuClock className="w-4 h-4" /> },
+  { id: '3', title: 'Birthday Gifts', subtitle: 'Category', type: 'category', icon: <LuPackage className="w-4 h-4" /> },
+  { id: '4', title: 'Squishmallow Collection', subtitle: 'Product', type: 'product', icon: <LuPackage className="w-4 h-4" /> },
+  { id: '5', title: 'Educational Toys', subtitle: 'Popular search', type: 'trending', icon: <LuTrendingUp className="w-4 h-4" /> },
+  { id: '6', title: 'Gift Boxes for Toddlers', subtitle: 'Recent', type: 'recent', icon: <LuClock className="w-4 h-4" /> },
+  { id: '7', title: 'Science Kits', subtitle: 'Saved search', type: 'recent', icon: <LuBookmark className="w-4 h-4" /> },
+];
 interface SearchSuggestion {
   id: string;
   title: string;
@@ -19,15 +28,7 @@ export const AutoSuggestSearch = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const suggestions: SearchSuggestion[] = [
-    { id: '1', title: 'Baby Gift Boxes', subtitle: 'Popular category', type: 'trending', icon: <LuTrendingUp className="w-4 h-4" /> },
-    { id: '2', title: 'Kids Art Supplies', subtitle: 'Recent search', type: 'recent', icon: <LuClock className="w-4 h-4" /> },
-    { id: '3', title: 'Birthday Gifts', subtitle: 'Category', type: 'category', icon: <LuPackage className="w-4 h-4" /> },
-    { id: '4', title: 'Squishmallow Collection', subtitle: 'Product', type: 'product', icon: <LuPackage className="w-4 h-4" /> },
-    { id: '5', title: 'Educational Toys', subtitle: 'Popular search', type: 'trending', icon: <LuTrendingUp className="w-4 h-4" /> },
-    { id: '6', title: 'Gift Boxes for Toddlers', subtitle: 'Recent', type: 'recent', icon: <LuClock className="w-4 h-4" /> },
-    { id: '7', title: 'Science Kits', subtitle: 'Saved search', type: 'recent', icon: <LuBookmark className="w-4 h-4" /> },
-  ];
+
 
   const filteredSuggestions = suggestions.filter(suggestion =>
     suggestion.title.toLowerCase().includes(query.toLowerCase()) ||

@@ -7,6 +7,8 @@ import { AutoSuggestSearch } from './auto-suggest-search';
 import { Authorization, GiftBoxesDropdown } from '../ui';
 import { BasicNavOptions } from './basic-nav-options';
 import { LuChevronDown, LuSearch } from 'react-icons/lu';
+import { ProfileDropdown } from './profile-dropdown/ProfileDropdown';
+import { CartDropdown } from './cart-dropdown/CartDropdown';
 
 export const Navigation = () => {
   const pathname = usePathname();
@@ -46,14 +48,18 @@ export const Navigation = () => {
 
   return (
     <nav className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <BasicNavOptions />
 
           <div className="hidden md:flex md:items-center md:justify-between md:flex-1 md:ml-10">
             <GiftBoxesDropdown />
             <AutoSuggestSearch />
-            <Authorization />
+            <div className="flex items-center gap-4">
+              <Authorization />
+              <ProfileDropdown />
+              <CartDropdown />
+            </div>
           </div>
 
           <div className="md:hidden flex items-center gap-2">
@@ -149,20 +155,28 @@ export const Navigation = () => {
               </div>
 
               <div className="pt-4 pb-2 border-t border-gray-200 mt-4 space-y-2">
-                <Link
-                  href="/login"
-                  onClick={closeMobileMenu}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors duration-200"
-                >
-                  Login
-                </Link>
-                <Link
-                  href="/signup"
-                  onClick={closeMobileMenu}
-                  className="block px-3 py-2 bg-blue-600 text-white text-base font-medium rounded-md hover:bg-blue-700 transition-colors duration-200 text-center"
-                >
-                  Sign Up
-                </Link>
+
+                <div className="mb-4 space-y-2">
+                  <CartDropdown isMobile={true} onItemClick={closeMobileMenu} />
+                  <ProfileDropdown isMobile={true} onItemClick={closeMobileMenu} />
+                </div>
+
+                <div className="border-t border-gray-200 pt-2 space-y-2">
+                  <Link
+                    href="/login"
+                    onClick={closeMobileMenu}
+                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors duration-200"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    href="/signup"
+                    onClick={closeMobileMenu}
+                    className="block px-3 py-2 bg-blue-600 text-white text-base font-medium rounded-md hover:bg-blue-700 transition-colors duration-200 text-center"
+                  >
+                    Sign Up
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
