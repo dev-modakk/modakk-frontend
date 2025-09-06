@@ -2,7 +2,15 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { LuFilter, LuGrid3X3, LuList, LuStar, LuHeart, LuShoppingCart, LuSearch } from 'react-icons/lu';
+import {
+  LuFilter,
+  LuGrid3X3,
+  LuList,
+  LuStar,
+  LuHeart,
+  LuShoppingCart,
+  LuSearch,
+} from 'react-icons/lu';
 import Footer from '../components/footer/Footer';
 
 interface GiftBox {
@@ -38,13 +46,15 @@ const BabyGiftBoxesPage: React.FC = () => {
       originalPrice: 109.95,
       rating: 4.9,
       reviews: 245,
-      image: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=400&h=400&fit=crop',
+      image:
+        'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=400&h=400&fit=crop',
       category: 'Newborn Care',
       ageRange: '0-3 months',
-      description: 'Everything new parents need including organic cotton clothes, blankets, and gentle care products.',
+      description:
+        "Everything new parents need including organic cotton clothes, blankets, and gentle care products.",
       badge: 'Popular',
       inStock: true,
-      featured: true
+      featured: true,
     },
     {
       id: '2',
@@ -52,13 +62,15 @@ const BabyGiftBoxesPage: React.FC = () => {
       price: 64.95,
       rating: 4.8,
       reviews: 156,
-      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop',
+      image:
+        'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop',
       category: 'Development & Learning',
       ageRange: '3-6 months',
-      description: 'Carefully selected toys and activities to stimulate baby\'s developing senses and motor skills.',
+      description:
+        "Carefully selected toys and activities to stimulate baby's developing senses and motor skills.",
       badge: 'New',
       inStock: true,
-      featured: true
+      featured: true,
     },
     {
       id: '3',
@@ -66,26 +78,30 @@ const BabyGiftBoxesPage: React.FC = () => {
       price: 49.95,
       rating: 4.7,
       reviews: 89,
-      image: 'https://images.unsplash.com/photo-1544842919-3a59e35b67a4?w=400&h=400&fit=crop',
+      image:
+        'https://images.unsplash.com/photo-1544842919-3a59e35b67a4?w=400&h=400&fit=crop',
       category: 'Feeding & Nutrition',
       ageRange: '6-12 months',
-      description: 'Safe feeding essentials and organic baby food starter sets for introducing solids.',
+      description:
+        'Safe feeding essentials and organic baby food starter sets for introducing solids.',
       inStock: true,
-      featured: false
+      featured: false,
     },
     {
       id: '4',
-      name: 'Baby\'s First Books Collection',
+      name: "Baby's First Books Collection",
       price: 34.95,
       rating: 4.8,
       reviews: 198,
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
+      image:
+        'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
       category: 'Books & Storytelling',
       ageRange: '0-12 months',
-      description: 'Soft fabric books, board books, and interactive story collections perfect for bedtime reading.',
+      description:
+        'Soft fabric books, board books, and interactive story collections perfect for bedtime reading.',
       badge: 'Bestseller',
       inStock: true,
-      featured: true
+      featured: true,
     },
     {
       id: '5',
@@ -93,12 +109,14 @@ const BabyGiftBoxesPage: React.FC = () => {
       price: 42.95,
       rating: 4.6,
       reviews: 134,
-      image: 'https://images.unsplash.com/photo-1559127452-34b1ba8beb64?w=400&h=400&fit=crop',
+      image:
+        'https://images.unsplash.com/photo-1559127452-34b1ba8beb64?w=400&h=400&fit=crop',
       category: 'Bath & Hygiene',
       ageRange: '3-12 months',
-      description: 'Gentle bath products, soft towels, and fun bath toys to make bathtime enjoyable.',
+      description:
+        'Gentle bath products, soft towels, and fun bath toys to make bathtime enjoyable.',
       inStock: true,
-      featured: false
+      featured: false,
     },
     {
       id: '6',
@@ -106,13 +124,15 @@ const BabyGiftBoxesPage: React.FC = () => {
       price: 76.95,
       rating: 4.9,
       reviews: 267,
-      image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=400&h=400&fit=crop',
+      image:
+        'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=400&h=400&fit=crop',
       category: 'Sleep & Comfort',
       ageRange: '0-6 months',
-      description: 'Premium sleep essentials including swaddles, sleep sacks, and soothing night lights.',
+      description:
+        'Premium sleep essentials including swaddles, sleep sacks, and soothing night lights.',
       badge: 'Premium',
       inStock: true,
-      featured: true
+      featured: true,
     },
     {
       id: '7',
@@ -120,12 +140,14 @@ const BabyGiftBoxesPage: React.FC = () => {
       price: 52.95,
       rating: 4.7,
       reviews: 112,
-      image: 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=400&h=400&fit=crop',
+      image:
+        'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=400&h=400&fit=crop',
       category: 'Play & Activity',
       ageRange: '3-9 months',
-      description: 'Soft activity mat with hanging toys and textures to encourage tummy time and development.',
+      description:
+        'Soft activity mat with hanging toys and textures to encourage tummy time and development.',
       inStock: false,
-      featured: false
+      featured: false,
     },
     {
       id: '8',
@@ -133,14 +155,16 @@ const BabyGiftBoxesPage: React.FC = () => {
       price: 67.95,
       rating: 4.8,
       reviews: 178,
-      image: 'https://images.unsplash.com/photo-1522441815192-d9f04eb0615c?w=400&h=400&fit=crop',
+      image:
+        'https://images.unsplash.com/photo-1522441815192-d9f04eb0615c?w=400&h=400&fit=crop',
       category: 'Clothing & Accessories',
       ageRange: '0-6 months',
-      description: 'Luxuriously soft organic cotton onesies, sleepers, and accessories in neutral colors.',
+      description:
+        'Luxuriously soft organic cotton onesies, sleepers, and accessories in neutral colors.',
       badge: 'Eco-Friendly',
       inStock: true,
-      featured: false
-    }
+      featured: false,
+    },
   ];
 
   const categories = [
@@ -152,51 +176,54 @@ const BabyGiftBoxesPage: React.FC = () => {
     'Bath & Hygiene',
     'Sleep & Comfort',
     'Play & Activity',
-    'Clothing & Accessories'
+    'Clothing & Accessories',
   ];
 
-  const ageRanges = [
-    'all',
-    '0-3 months',
-    '3-6 months',
-    '6-12 months',
-    '12+ months'
-  ];
+  const ageRanges = ['all', '0-3 months', '3-6 months', '6-12 months', '12+ months'];
 
   const toggleWishlist = (id: string) => {
-    setWishlistedItems(prev =>
-      prev.includes(id)
-        ? prev.filter(item => item !== id)
-        : [...prev, id]
+    setWishlistedItems((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
     );
   };
 
   const getBadgeColor = (badge: string) => {
     switch (badge) {
-      case 'Popular': return 'bg-blue-600 text-white';
-      case 'New': return 'bg-green-600 text-white';
-      case 'Bestseller': return 'bg-purple-600 text-white';
-      case 'Premium': return 'bg-gold-600 text-white';
-      case 'Eco-Friendly': return 'bg-emerald-600 text-white';
-      default: return 'bg-gray-600 text-white';
+      case 'Popular':
+        return 'bg-blue-600 text-white';
+      case 'New':
+        return 'bg-green-600 text-white';
+      case 'Bestseller':
+        return 'bg-purple-600 text-white';
+      case 'Premium':
+        return 'bg-amber-600 text-white'; // Tailwind-safe "gold"
+      case 'Eco-Friendly':
+        return 'bg-emerald-600 text-white';
+      default:
+        return 'bg-gray-600 text-white';
     }
   };
 
   const filteredAndSortedBoxes = giftBoxes
-    .filter(box => {
-      const matchesSearch = box.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        box.description.toLowerCase().includes(searchQuery.toLowerCase());
+    .filter((box) => {
+      const q = searchQuery.toLowerCase();
+      const matchesSearch =
+        box.name.toLowerCase().includes(q) || box.description.toLowerCase().includes(q);
       const matchesCategory = selectedCategory === 'all' || box.category === selectedCategory;
-      const matchesAge = selectedAge === 'all' || box.ageRange.includes(selectedAge.split('-')[0]);
-
+      const matchesAge =
+        selectedAge === 'all' || box.ageRange.includes(selectedAge.split('-')[0]);
       return matchesSearch && matchesCategory && matchesAge;
     })
     .sort((a, b) => {
       switch (sortBy) {
-        case 'price-low': return a.price - b.price;
-        case 'price-high': return b.price - a.price;
-        case 'rating': return b.rating - a.rating;
-        case 'newest': return b.id.localeCompare(a.id);
+        case 'price-low':
+          return a.price - b.price;
+        case 'price-high':
+          return b.price - a.price;
+        case 'rating':
+          return b.rating - a.rating;
+        case 'newest':
+          return b.id.localeCompare(a.id);
         case 'featured':
         default:
           if (a.featured && !b.featured) return -1;
@@ -208,7 +235,7 @@ const BabyGiftBoxesPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50 py-6 px-4 sm:py-8">
       <div className="max-w-7xl mx-auto">
-
+        {/* Header & controls */}
         <div className="mb-8">
           <div className="text-center mb-8">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 tracking-tight">
@@ -228,7 +255,7 @@ const BabyGiftBoxesPage: React.FC = () => {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
-              <LuSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
+              <LuSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5" />
             </div>
 
             <div className="flex items-center gap-3">
@@ -243,14 +270,18 @@ const BabyGiftBoxesPage: React.FC = () => {
               <div className="flex items-center gap-1 border border-slate-300 rounded-xl p-1">
                 <button
                   onClick={() => setViewMode('grid')}
-                  className={`p-2 rounded-lg transition-colors duration-200 ${viewMode === 'grid' ? 'bg-blue-600 text-white' : 'text-slate-600 hover:bg-slate-100'
+                  className={`p-2 rounded-lg transition-colors duration-200 ${viewMode === 'grid'
+                    ? 'bg-blue-600 text-white'
+                    : 'text-slate-600 hover:bg-slate-100'
                     }`}
                 >
                   <LuGrid3X3 className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => setViewMode('list')}
-                  className={`p-2 rounded-lg transition-colors duration-200 ${viewMode === 'list' ? 'bg-blue-600 text-white' : 'text-slate-600 hover:bg-slate-100'
+                  className={`p-2 rounded-lg transition-colors duration-200 ${viewMode === 'list'
+                    ? 'bg-blue-600 text-white'
+                    : 'text-slate-600 hover:bg-slate-100'
                     }`}
                 >
                   <LuList className="w-4 h-4" />
@@ -259,7 +290,11 @@ const BabyGiftBoxesPage: React.FC = () => {
             </div>
           </div>
 
-          <div className={`${showFilters ? 'block' : 'hidden'} sm:block bg-white rounded-xl p-4 sm:p-6 border border-slate-200 mb-6`}>
+          {/* Filters */}
+          <div
+            className={`${showFilters ? 'block' : 'hidden'
+              } sm:block bg-white rounded-xl p-4 sm:p-6 border border-slate-200 mb-6`}
+          >
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">Category</label>
@@ -268,7 +303,7 @@ const BabyGiftBoxesPage: React.FC = () => {
                   onChange={(e) => setSelectedCategory(e.target.value)}
                   className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
-                  {categories.map(category => (
+                  {categories.map((category) => (
                     <option key={category} value={category}>
                       {category === 'all' ? 'All Categories' : category}
                     </option>
@@ -283,7 +318,7 @@ const BabyGiftBoxesPage: React.FC = () => {
                   onChange={(e) => setSelectedAge(e.target.value)}
                   className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
-                  {ageRanges.map(age => (
+                  {ageRanges.map((age) => (
                     <option key={age} value={age}>
                       {age === 'all' ? 'All Ages' : age}
                     </option>
@@ -323,32 +358,51 @@ const BabyGiftBoxesPage: React.FC = () => {
           </div>
         </div>
 
+        {/* Count */}
         <div className="mb-6">
           <p className="text-slate-600">
             Showing {filteredAndSortedBoxes.length} of {giftBoxes.length} baby gift boxes
           </p>
         </div>
 
+        {/* GRID VIEW */}
         {viewMode === 'grid' ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredAndSortedBoxes.map((box) => (
-              <div key={box.id} className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-lg transition-all duration-300 group">
+              <div
+                key={box.id}
+                className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-lg transition-all duration-300 group"
+              >
                 <div className="relative">
-                  <img
-                    src={box.image}
-                    alt={box.name}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
+                  {/* Make image clickable */}
+                  <Link
+                    href={`/product/${box.id}`}
+                    className="block"
+                    aria-label={`View ${box.name}`}
+                  >
+                    <img
+                      src={box.image}
+                      alt={box.name}
+                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </Link>
 
+                  {/* Badge overlay shouldn't block clicks */}
                   {box.badge && (
-                    <div className={`absolute top-3 left-3 px-2 py-1 rounded-lg text-xs font-bold ${getBadgeColor(box.badge)}`}>
+                    <div
+                      className={`absolute top-3 left-3 px-2 py-1 rounded-lg text-xs font-bold ${getBadgeColor(
+                        box.badge
+                      )} pointer-events-none`}
+                    >
                       {box.badge}
                     </div>
                   )}
 
+                  {/* Wishlist (kept above the link) */}
                   <button
                     onClick={() => toggleWishlist(box.id)}
-                    className="absolute top-3 right-3 p-2 bg-white rounded-full shadow-md hover:bg-gray-50 transition-colors duration-200"
+                    className="absolute top-3 right-3 p-2 bg-white rounded-full shadow-md hover:bg-gray-50 transition-colors duration-200 z-10"
+                    aria-label="Toggle wishlist"
                   >
                     <LuHeart
                       className={`w-4 h-4 ${wishlistedItems.includes(box.id)
@@ -358,8 +412,9 @@ const BabyGiftBoxesPage: React.FC = () => {
                     />
                   </button>
 
+                  {/* Out-of-stock overlay shouldn't block clicks */}
                   {!box.inStock && (
-                    <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-black/50 flex items-center justify-center pointer-events-none">
                       <span className="text-white font-semibold bg-red-600 px-3 py-1 rounded-lg">
                         Out of Stock
                       </span>
@@ -383,15 +438,16 @@ const BabyGiftBoxesPage: React.FC = () => {
                     <span className="text-xs text-slate-500">({box.reviews})</span>
                   </div>
 
-                  <h3 className="font-bold text-slate-900 mb-1 line-clamp-2">
-                    {box.name}
-                  </h3>
+                  {/* Make title clickable too */}
+                  <Link
+                    href={`/product/${box.id}`}
+                    className="block hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded"
+                  >
+                    <h3 className="font-bold text-slate-900 mb-1 line-clamp-2">{box.name}</h3>
+                  </Link>
 
                   <p className="text-xs text-slate-600 mb-2">{box.ageRange}</p>
-
-                  <p className="text-sm text-slate-600 mb-3 line-clamp-2">
-                    {box.description}
-                  </p>
+                  <p className="text-sm text-slate-600 mb-3 line-clamp-2">{box.description}</p>
 
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
@@ -421,25 +477,30 @@ const BabyGiftBoxesPage: React.FC = () => {
             ))}
           </div>
         ) : (
+          /* LIST VIEW */
           <div className="space-y-4">
             {filteredAndSortedBoxes.map((box) => (
-              <div key={box.id} className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                <div className="flex flex-col sm:flex-row">
+              <div
+                key={box.id}
+                className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-lg transition-shadow duration-300"
+              >
+                {/* Whole row clickable */}
+                <Link href={`/product/${box.id}`} className="flex flex-col sm:flex-row">
                   <div className="relative sm:w-48 h-48 flex-shrink-0">
-                    <img
-                      src={box.image}
-                      alt={box.name}
-                      className="w-full h-full object-cover"
-                    />
+                    <img src={box.image} alt={box.name} className="w-full h-full object-cover" />
 
                     {box.badge && (
-                      <div className={`absolute top-3 left-3 px-2 py-1 rounded-lg text-xs font-bold ${getBadgeColor(box.badge)}`}>
+                      <div
+                        className={`absolute top-3 left-3 px-2 py-1 rounded-lg text-xs font-bold ${getBadgeColor(
+                          box.badge
+                        )} pointer-events-none`}
+                      >
                         {box.badge}
                       </div>
                     )}
 
                     {!box.inStock && (
-                      <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                      <div className="absolute inset-0 bg-black/50 flex items-center justify-center pointer-events-none">
                         <span className="text-white font-semibold bg-red-600 px-3 py-1 rounded-lg">
                           Out of Stock
                         </span>
@@ -462,21 +523,19 @@ const BabyGiftBoxesPage: React.FC = () => {
                               />
                             ))}
                           </div>
-                          <span className="text-sm text-slate-500">({box.reviews} reviews)</span>
+                          <span className="text-sm text-slate-500">
+                            ({box.reviews} reviews)
+                          </span>
                         </div>
 
-                        <h3 className="text-xl font-bold text-slate-900 mb-2">
-                          {box.name}
-                        </h3>
+                        <h3 className="text-xl font-bold text-slate-900 mb-2">{box.name}</h3>
 
                         <div className="flex items-center gap-4 mb-3">
                           <span className="text-sm text-blue-600 font-medium">{box.category}</span>
                           <span className="text-sm text-slate-600">{box.ageRange}</span>
                         </div>
 
-                        <p className="text-slate-600 leading-relaxed">
-                          {box.description}
-                        </p>
+                        <p className="text-slate-600 leading-relaxed">{box.description}</p>
                       </div>
 
                       <div className="flex flex-row sm:flex-col sm:items-end justify-between sm:justify-start gap-4 mt-4 sm:mt-0 sm:ml-6">
@@ -490,46 +549,60 @@ const BabyGiftBoxesPage: React.FC = () => {
                             ${box.price.toFixed(2)}
                           </div>
                         </div>
-
-                        <div className="flex gap-2">
-                          <button
-                            onClick={() => toggleWishlist(box.id)}
-                            className="p-2 border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors duration-200"
-                          >
-                            <LuHeart
-                              className={`w-4 h-4 ${wishlistedItems.includes(box.id)
-                                ? 'fill-red-500 text-red-500'
-                                : 'text-gray-400'
-                                }`}
-                            />
-                          </button>
-
-                          <button
-                            disabled={!box.inStock}
-                            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors duration-200 ${box.inStock
-                              ? 'bg-blue-600 hover:bg-blue-700 text-white'
-                              : 'bg-gray-200 text-gray-500 cursor-not-allowed'
-                              }`}
-                          >
-                            <LuShoppingCart className="w-4 h-4" />
-                            {box.inStock ? 'Add to Cart' : 'Out of Stock'}
-                          </button>
-                        </div>
                       </div>
                     </div>
                   </div>
+                </Link>
+
+                {/* Actions outside of Link; prevent navigation */}
+                <div className="px-6 pb-6 flex gap-2 justify-end">
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      toggleWishlist(box.id);
+                    }}
+                    className="p-2 border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors duration-200"
+                    aria-label="Toggle wishlist"
+                  >
+                    <LuHeart
+                      className={`w-4 h-4 ${wishlistedItems.includes(box.id)
+                        ? 'fill-red-500 text-red-500'
+                        : 'text-gray-400'
+                        }`}
+                    />
+                  </button>
+
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      // add-to-cart logic here
+                    }}
+                    disabled={!box.inStock}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors duration-200 ${box.inStock
+                      ? 'bg-blue-600 hover:bg-blue-700 text-white'
+                      : 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                      }`}
+                  >
+                    <LuShoppingCart className="w-4 h-4" />
+                    {box.inStock ? 'Add to Cart' : 'Out of Stock'}
+                  </button>
                 </div>
               </div>
             ))}
           </div>
         )}
 
+        {/* Empty state */}
         {filteredAndSortedBoxes.length === 0 && (
           <div className="text-center py-12">
             <div className="w-24 h-24 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <LuSearch className="w-12 h-12 text-slate-400" />
             </div>
-            <h3 className="text-xl font-semibold text-slate-900 mb-2">No baby gift boxes found</h3>
+            <h3 className="text-xl font-semibold text-slate-900 mb-2">
+              No baby gift boxes found
+            </h3>
             <p className="text-slate-600 mb-6">Try adjusting your search or filter criteria</p>
             <button
               onClick={() => {
