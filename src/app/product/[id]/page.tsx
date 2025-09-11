@@ -1,4 +1,3 @@
-// app/product/[id]/page.tsx
 'use client';
 
 import React, { useMemo, useState } from 'react';
@@ -19,7 +18,8 @@ import {
   LuChevronDown,
   LuArrowLeft,
 } from 'react-icons/lu';
-import Footer from '../../components/footer/Footer';
+import { Footer } from '@/components';
+
 
 type Product = {
   id: string;

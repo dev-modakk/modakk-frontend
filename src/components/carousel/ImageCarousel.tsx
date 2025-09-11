@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { LuChevronLeft, LuChevronRight } from 'react-icons/lu';
 import { ImageCarouselProps } from './ImageCarouselProps.interface';
+import { useCarouselQuery } from '@/query-hooks';
 
 export const ImageCarousel: React.FC<ImageCarouselProps> = ({
   images,
@@ -15,27 +16,35 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
+  const { data: apiImages, isLoading, error } = useCarouselQuery();
+
+  const carouselImages = Array.isArray(apiImages) ? apiImages : (images || []);
+
   const goToSlide = useCallback((index: number) => {
     setCurrentIndex(index);
   }, []);
 
   const goToPrevious = useCallback(() => {
-    setCurrentIndex(prev => prev === 0 ? images.length - 1 : prev - 1);
-  }, [images.length]);
+    setCurrentIndex(prev => prev === 0 ? carouselImages.length - 1 : prev - 1);
+  }, [carouselImages.length]);
 
   const goToNext = useCallback(() => {
-    setCurrentIndex(prev => prev === images.length - 1 ? 0 : prev + 1);
-  }, [images.length]);
+    setCurrentIndex(prev => prev === carouselImages.length - 1 ? 0 : prev + 1);
+  }, [carouselImages.length]);
 
   useEffect(() => {
-    if (!isAutoPlaying) return;
+    setCurrentIndex(0);
+  }, [carouselImages]);
+
+  useEffect(() => {
+    if (!isAutoPlaying || carouselImages.length === 0) return;
 
     const interval = setInterval(() => {
       goToNext();
     }, autoplayInterval);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying, autoplayInterval, goToNext]);
+  }, [isAutoPlaying, autoplayInterval, goToNext, carouselImages.length]);
 
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
@@ -81,14 +90,30 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
     setIsAutoPlaying(true);
   };
 
-  if (!images || images.length === 0) {
+  if (isLoading) {
+    return (
+      <div className="relative w-full max-w-7xl mx-auto bg-gray-200 rounded-lg overflow-hidden shadow-2xl h-96 md:h-[500px] lg:h-[600px] flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="relative w-full max-w-7xl mx-auto bg-gray-200 rounded-lg overflow-hidden shadow-2xl h-96 md:h-[500px] lg:h-[600px] flex items-center justify-center">
+        <p className="text-gray-500">Failed to load carousel images</p>
+      </div>
+    );
+  }
+
+  if (!carouselImages || carouselImages.length === 0) {
     return (
       <div className="w-full h-96 bg-gray-200 rounded-lg flex items-center justify-center">
         <p className="text-gray-500">No images to display</p>
       </div>
     );
   }
-
+  console.log({ carouselImages })
   return (
     <div
       className={`relative w-full max-w-6xl mx-auto bg-black rounded-lg overflow-hidden shadow-2xl ${className}`}
@@ -103,10 +128,10 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
           className="flex transition-transform duration-500 ease-in-out h-full"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
-          {images.map((image, index) => (
+          {carouselImages.map((image, index) => (
             <div key={index} className="w-full h-full flex-shrink-0 relative">
               <img
-                src={image.src}
+                src={image.image}
                 alt={image.alt}
                 className="w-full h-full object-cover"
                 draggable={false}
@@ -131,7 +156,7 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
         </div>
       </div>
 
-      {showArrows && images.length > 1 && (
+      {showArrows && carouselImages.length > 1 && (
         <>
           <button
             onClick={goToPrevious}
@@ -150,9 +175,9 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
         </>
       )}
 
-      {showDots && images.length > 1 && (
+      {showDots && carouselImages.length > 1 && (
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
-          {images.map((_, index) => (
+          {carouselImages.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}

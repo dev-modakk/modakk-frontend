@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { LuArrowRight, LuChevronUp, LuClock, LuFacebook, LuGift, LuHeart, LuInstagram, LuMail, LuMapPin, LuPhone, LuShield, LuStar, LuTruck, LuTwitter, LuYoutube } from 'react-icons/lu';
 
-const Footer: React.FC = () => {
+export const Footer: React.FC = () => {
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -209,5 +209,3 @@ const Footer: React.FC = () => {
     </footer>
   );
 };
-
-export default Footer;

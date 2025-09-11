@@ -1,13 +1,31 @@
 'use client';
-import { GIFT_BOXES_PRODUCT_RESPONSE } from "@/app/mocks"
-import { getBadgeColor } from "@/app/utils";
+import { GIFT_BOXES_PRODUCT_RESPONSE } from "@/mocks"
+import { getBadgeColor } from "@/utils";
 import { useState } from "react";
 import { LuHeart, LuShoppingCart, LuStar } from "react-icons/lu"
 
-export const GiftBoxesProductCard = () => {
-  const [wishlistedItems, setWishlistedItems] = useState<number[]>([]);
+interface GiftBox {
+  id: string;
+  name: string;
+  price: number;
+  rating: number;
+  reviews: number;
+  image: string;
+  description: string;
+  badge?: string;
+  inStock: boolean;
+}
 
-  const toggleWishlist = (id: number) => {
+interface GiftBoxesProductCardProps {
+  giftBoxes?: GiftBox[];
+}
+
+export const GiftBoxesProductCard: React.FC<GiftBoxesProductCardProps> = ({
+  giftBoxes = GIFT_BOXES_PRODUCT_RESPONSE
+}) => {
+  const [wishlistedItems, setWishlistedItems] = useState<string[]>([]);
+
+  const toggleWishlist = (id: string) => {
     setWishlistedItems(prev =>
       prev.includes(id)
         ? prev.filter(item => item !== id)
@@ -17,7 +35,7 @@ export const GiftBoxesProductCard = () => {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12 lg:mb-16">
-      {GIFT_BOXES_PRODUCT_RESPONSE.map((box) => (
+      {giftBoxes.map((box) => (
         <div
           key={box.id}
           className="relative bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-200 border border-gray-300 overflow-hidden mx-auto w-full max-w-sm"
@@ -49,7 +67,7 @@ export const GiftBoxesProductCard = () => {
               />
             </div>
 
-            {box.isSoldOut && (
+            {!box.inStock && (
               <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center rounded-t-lg">
                 <span className="text-white font-medium text-sm sm:text-base">Sold Out</span>
               </div>
@@ -82,21 +100,21 @@ export const GiftBoxesProductCard = () => {
 
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
               <span className="text-2xl sm:text-3xl font-black text-gray-900">
-                ${box.price}
+                ₹{box.price}
               </span>
 
               <button
-                disabled={box.isSoldOut}
+                disabled={!box.inStock}
                 className={`
                           flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2 rounded-lg font-medium transition-colors duration-200 text-sm sm:text-base justify-center sm:justify-start
-                          ${box.isSoldOut
+                          ${!box.inStock
                     ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
                     : 'bg-blue-600 hover:bg-blue-700 text-white'
                   }
                         `}
               >
                 <LuShoppingCart className="w-4 h-4" />
-                {box.isSoldOut ? 'Sold Out' : 'Add to Cart'}
+                {!box.inStock ? 'Sold Out' : 'Add to Cart'}
               </button>
             </div>
           </div>
