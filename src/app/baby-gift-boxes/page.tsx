@@ -11,7 +11,8 @@ import {
   LuShoppingCart,
   LuSearch,
 } from 'react-icons/lu';
-import Footer from '../components/footer/Footer';
+import { Footer } from '@/components';
+
 
 interface GiftBox {
   id: string;
