@@ -44,7 +44,7 @@ export const fetchKidsGiftBoxes = async (
     if (response.data.items) {
       const items = response.data.items || [];
       const transformedItems = items.map((item: any) => ({
-        id: item.id,
+        id: item.displayId, // Use displayId for product links
         name: item.name,
         price: parseFloat(item.priceInINR),
         originalPrice: undefined, // Not provided by API

@@ -15,23 +15,10 @@ import {
 import { Footer, Pagination } from '@/components';
 import { useKidsGiftBoxesStore } from '@/store';
 import { useKidsGiftBoxesQuery } from '@/query-hooks/kids-gift-boxes/useKidsGiftBoxesQuery';
+import { KidsGiftBox } from './KidsGiftBox.interface';
+import { getBadgeColor } from '@/utils';
+import { ageRanges, categories } from '@/shared';
 
-
-interface KidsGiftBox {
-  id: string;
-  name: string;
-  price: number;
-  originalPrice?: number;
-  rating: number;
-  reviews: number;
-  image: string;
-  category: string;
-  ageRange: string;
-  description: string;
-  badge?: string;
-  inStock: boolean;
-  featured: boolean;
-}
 
 const KidsGiftBoxesPage: React.FC = () => {
 
@@ -57,7 +44,7 @@ const KidsGiftBoxesPage: React.FC = () => {
     setPageSize,
   } = useKidsGiftBoxesStore();
 
-  // Use React Query for data fetching instead of useEffect + Zustand
+
   const {
     data,
     isLoading,
@@ -72,41 +59,12 @@ const KidsGiftBoxesPage: React.FC = () => {
     sortBy: sortBy || undefined
   });
 
-  // Extract data from React Query response
+
   const apiGiftBoxes = data?.items || [];
   const apiTotal = data?.total || 0;
   const apiTotalPages = data?.totalPages || 1;
   const apiLoading = isLoading;
   const apiError = queryError;
-
-
-
-  const categories = [
-    'all',
-    'Gift Boxes',
-    'Toys',
-  ];
-
-  const ageRanges = ['all', '3-5 years', '6-8 years', '9-12 years', '13+ years'];
-
-  const getBadgeColor = (badge: string) => {
-    switch (badge) {
-      case 'Popular':
-        return 'bg-blue-600 text-white';
-      case 'New':
-      case 'New Arrival':
-        return 'bg-green-600 text-white';
-      case 'Bestseller':
-      case 'Best Seller':
-        return 'bg-purple-600 text-white';
-      case 'Limited':
-        return 'bg-red-600 text-white';
-      default:
-        return 'bg-gray-600 text-white';
-    }
-  };
-
-  // Use API data instead of Zustand filtered data
   const filteredAndSortedBoxes = apiGiftBoxes;
 
   return (
@@ -285,7 +243,7 @@ const KidsGiftBoxesPage: React.FC = () => {
                     <div className="relative">
 
                       <Link
-                        href={`/product/${box.id}`}
+                        href={`/kidsgiftboxes/${box.id}`}
                         className="block"
                         aria-label={`View ${box.name}`}
                       >
@@ -351,7 +309,7 @@ const KidsGiftBoxesPage: React.FC = () => {
 
 
                       <Link
-                        href={`/product/${box.id}`}
+                        href={`/kidsgiftboxes/${box.id}`}
                         className="block hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 rounded"
                       >
                         <h3 className="font-bold text-slate-900 mb-1 line-clamp-2">
@@ -401,7 +359,7 @@ const KidsGiftBoxesPage: React.FC = () => {
                   >
                     {/* Whole row clickable in list view */}
                     <Link
-                      href={`/product/${box.id}`}
+                      href={`/kidsgiftboxes/${box.id}`}
                       className="flex flex-col sm:flex-row"
                     >
                       <div className="relative sm:w-48 h-48 flex-shrink-0">

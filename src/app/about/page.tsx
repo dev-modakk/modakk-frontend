@@ -30,9 +30,9 @@ const AboutPage: React.FC = () => {
 
   const teamMembers = [
     {
-      name: "Sarah Mitchell",
+      name: "Rekha Tyagi",
       role: "Founder & CEO",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=300&h=300&fit=crop",
+      image: "https://ik.imagekit.io/modakk/Generated%20Image%20September%2011,%202025%20-%201_06AM.png?updatedAt=1757623872686",
       bio: "A mother of two with 15 years in retail, Sarah founded Modakk to solve the challenge of finding perfect gifts for children."
     },
     {
@@ -42,14 +42,14 @@ const AboutPage: React.FC = () => {
       bio: "Former toy industry executive who ensures every product meets our quality and safety standards."
     },
     {
-      name: "Emma Rodriguez",
-      role: "Customer Experience Lead",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop",
+      name: "Shivani Tyagi",
+      role: "Operations Manager",
+      image: "https://ik.imagekit.io/modakk/Generated%20Image%20September%2011,%202025%20-%2012_56AM.png?updatedAt=1757623944736",
       bio: "Passionate about creating magical unboxing experiences and building lasting relationships with families."
     },
     {
-      name: "Michael Thompson",
-      role: "Operations Director",
+      name: "Utkarsh Upadhyay",
+      role: "Head of Design",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop",
       bio: "Logistics expert ensuring every gift box arrives on time and in perfect condition across New Zealand."
     }

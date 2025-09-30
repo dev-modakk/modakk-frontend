@@ -3,6 +3,7 @@ import { GIFT_BOXES_PRODUCT_RESPONSE } from "@/mocks"
 import { getBadgeColor } from "@/utils";
 import { useState } from "react";
 import { LuHeart, LuShoppingCart, LuStar } from "react-icons/lu"
+import Link from "next/link";
 
 interface GiftBox {
   id: string;
@@ -90,9 +91,11 @@ export const GiftBoxesProductCard: React.FC<GiftBoxesProductCardProps> = ({
               <span className="text-xs sm:text-sm text-gray-500">({box.reviews})</span>
             </div>
 
-            <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3 leading-tight">
-              {box.name}
-            </h3>
+            <Link href={`/kidsgiftboxes/${box.id}`}>
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3 leading-tight hover:underline transition-all duration-200 cursor-pointer">
+                {box.name}
+              </h3>
+            </Link>
 
             <p className="text-gray-600 text-xs sm:text-sm mb-4 sm:mb-6 leading-relaxed">
               {box.description}

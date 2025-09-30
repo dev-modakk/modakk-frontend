@@ -508,7 +508,8 @@ export default function ProductPage() {
             </section>
           </div>
 
-          {/* Related products */}
+          {/*TODO:// Create API for related products */}
+          {/* Related products
           {related.length > 0 && (
             <section className="mt-12">
               <h2 className="text-xl font-bold text-slate-900 mb-4">You may also like</h2>
@@ -521,7 +522,7 @@ export default function ProductPage() {
                     <Link href={`/kidsgiftboxes/${r.id}`} className="block">
                       <div className="relative">
                         <img
-                          src={r.images[0]}
+                          src={r.images[0] || r.image}
                           alt={r.name}
                           className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
                         />
@@ -571,7 +572,7 @@ export default function ProductPage() {
                 ))}
               </div>
             </section>
-          )}
+          )} */}
         </div>
       </div>
 

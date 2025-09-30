@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { LuArrowRight, LuChevronUp, LuClock, LuFacebook, LuGift, LuHeart, LuInstagram, LuMail, LuMapPin, LuPhone, LuShield, LuStar, LuTruck, LuTwitter, LuYoutube } from 'react-icons/lu';
+import { Logo } from '@/components';
 
 export const Footer: React.FC = () => {
 
@@ -44,9 +45,15 @@ export const Footer: React.FC = () => {
 
               <div className="sm:col-span-2 lg:col-span-1">
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 rounded-xl flex items-center justify-center">
+                  {/* <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 rounded-xl flex items-center justify-center">
                     <LuGift className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white" />
-                  </div>
+                  </div> */}
+                  <Logo size="xxl" />
+                  {/* <Logo
+                    size="xxl"
+                    src="/assets/Modakk-final-logo.png"
+                    alt="Final Modakk Logo"
+                  /> */}
                   <span className="text-xl sm:text-2xl font-bold text-gray-800">Modakk</span>
                 </div>
 
