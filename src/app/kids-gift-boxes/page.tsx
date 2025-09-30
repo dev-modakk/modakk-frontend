@@ -13,16 +13,17 @@ import {
   LuLoader,
 } from 'react-icons/lu';
 import { Footer, Pagination } from '@/components';
-import { useKidsGiftBoxesStore } from '@/store';
-import { useKidsGiftBoxesQuery } from '@/query-hooks/kids-gift-boxes/useKidsGiftBoxesQuery';
+import { useKidsGiftBoxes } from '@/hooks';
 import { KidsGiftBox } from './KidsGiftBox.interface';
 import { getBadgeColor } from '@/utils';
 import { ageRanges, categories } from '@/shared';
 
 
 const KidsGiftBoxesPage: React.FC = () => {
-
   const {
+    giftBoxes,
+    isLoading,
+    error,
     searchQuery,
     selectedCategory,
     selectedAge,
@@ -32,6 +33,10 @@ const KidsGiftBoxesPage: React.FC = () => {
     wishlistedItems,
     currentPage,
     pageSize,
+    totalItems,
+    totalPages,
+    hasNextPage,
+    hasPrevPage,
     setSearchQuery,
     setSelectedCategory,
     setSelectedAge,
@@ -42,30 +47,9 @@ const KidsGiftBoxesPage: React.FC = () => {
     clearFilters,
     setCurrentPage,
     setPageSize,
-  } = useKidsGiftBoxesStore();
+  } = useKidsGiftBoxes();
 
-
-  const {
-    data,
-    isLoading,
-    error: queryError,
-    refetch
-  } = useKidsGiftBoxesQuery({
-    page: currentPage,
-    limit: pageSize,
-    category: selectedCategory !== 'all' ? selectedCategory : undefined,
-    ageRange: selectedAge !== 'all' ? selectedAge : undefined,
-    search: searchQuery || undefined,
-    sortBy: sortBy || undefined
-  });
-
-
-  const apiGiftBoxes = data?.items || [];
-  const apiTotal = data?.total || 0;
-  const apiTotalPages = data?.totalPages || 1;
-  const apiLoading = isLoading;
-  const apiError = queryError;
-  const filteredAndSortedBoxes = apiGiftBoxes;
+  const filteredAndSortedBoxes = giftBoxes;
 
   return (
     <div className="min-h-screen bg-gray-50 py-6 px-4 sm:py-8">
@@ -194,7 +178,7 @@ const KidsGiftBoxesPage: React.FC = () => {
         </div>
 
 
-        {apiLoading && (
+        {isLoading && (
           <div className="flex items-center justify-center py-12">
             <div className="flex items-center gap-3">
               <LuLoader className="w-6 h-6 animate-spin text-blue-600" />
@@ -203,8 +187,7 @@ const KidsGiftBoxesPage: React.FC = () => {
           </div>
         )}
 
-        {/* Error State */}
-        {apiError && !apiLoading && (
+        {error && !isLoading && (
           <div className="text-center py-12">
             <div className="w-24 h-24 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <LuSearch className="w-12 h-12 text-red-400" />
@@ -213,10 +196,10 @@ const KidsGiftBoxesPage: React.FC = () => {
               No kids gift boxes found
             </h3>
             <p className="text-slate-600 mb-6">
-              {(apiError as any)?.message || 'We encountered an error while loading the gift boxes. Please try again later.'}
+              {(error as any)?.message || 'We encountered an error while loading the gift boxes. Please try again later.'}
             </p>
             <button
-              onClick={() => refetch()}
+              onClick={() => window.location.reload()}
               className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl transition-colors duration-200"
             >
               Try Again
@@ -224,11 +207,11 @@ const KidsGiftBoxesPage: React.FC = () => {
           </div>
         )}
 
-        {!apiLoading && !apiError && (
+        {!isLoading && !error && (
           <>
             <div className="mb-6">
               <p className="text-slate-600">
-                Showing {filteredAndSortedBoxes.length} of {apiTotal} gift
+                Showing {filteredAndSortedBoxes.length} of {totalItems} gift
                 boxes
               </p>
             </div>
@@ -482,7 +465,7 @@ const KidsGiftBoxesPage: React.FC = () => {
               </div>
             )}
 
-            {filteredAndSortedBoxes.length === 0 && !apiLoading && !apiError && (
+            {filteredAndSortedBoxes.length === 0 && !isLoading && !error && (
               <div className="text-center py-12">
                 <div className="w-24 h-24 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <LuSearch className="w-12 h-12 text-slate-400" />
@@ -504,14 +487,13 @@ const KidsGiftBoxesPage: React.FC = () => {
           </>
         )}
 
-        {/* Pagination */}
-        {!apiLoading && !apiError && apiGiftBoxes.length > 0 && (
+        {!isLoading && !error && filteredAndSortedBoxes.length > 0 && (
           <div className="mt-8">
             <Pagination
               currentPage={currentPage}
-              totalPages={apiTotalPages}
+              totalPages={totalPages}
               pageSize={pageSize}
-              total={apiTotal}
+              total={totalItems}
               onPageChange={setCurrentPage}
               onPageSizeChange={setPageSize}
               className="border-t pt-6"

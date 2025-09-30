@@ -22,7 +22,13 @@ export const fetchKidsGiftBoxes = async (
 
     // Add filters if provided
     if (filters.category && filters.category !== 'all') {
-      params.append('category', filters.category);
+      // Map display categories to API categories
+      const categoryMap: { [key: string]: string } = {
+        'Gift Boxes': 'GB',
+        'Toys': 'TY'
+      };
+      const apiCategory = categoryMap[filters.category] || filters.category;
+      params.append('category', apiCategory);
     }
     if (filters.ageRange && filters.ageRange !== 'all') {
       params.append('ageRange', filters.ageRange);
@@ -31,7 +37,16 @@ export const fetchKidsGiftBoxes = async (
       params.append('search', filters.search);
     }
     if (filters.sortBy) {
-      params.append('sortBy', filters.sortBy);
+      // Map frontend sort values to API sort values
+      const sortMap: { [key: string]: string } = {
+        'featured': 'featured',
+        'newest': 'newest', 
+        'price-low': 'price_asc',
+        'price-high': 'price_desc',
+        'rating': 'rating'
+      };
+      const apiSortBy = sortMap[filters.sortBy] || filters.sortBy;
+      params.append('sortBy', apiSortBy);
     }
 
     const queryString = params.toString();
