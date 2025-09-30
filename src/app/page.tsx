@@ -1,10 +1,5 @@
-
-import { TestimonialSection } from './components/testimonial/Testimonial';
-import Footer from './components/footer/Footer';
-import { Navigation } from '@/app/components';
-import { CAROUSEL_PRODUCT_IMAGES_RESPONSE } from './mocks';
-import { ImageCarousel } from './components/carousel';
-import { KidsGiftBoxSection } from './components/kid-gift-boxes-section';
+import { Footer, ImageCarousel, KidsGiftBoxSection, TestimonialSection } from "@/components";
+import { CAROUSEL_PRODUCT_IMAGES_RESPONSE } from "@/mocks";
 
 export default function Home() {
   return (
@@ -24,7 +19,14 @@ export default function Home() {
         />
         <div className="relative z-10 p-4 md:p-8">
           <div className="max-w-6xl mx-auto">
-            <ImageCarousel images={CAROUSEL_PRODUCT_IMAGES_RESPONSE} />
+            <ImageCarousel
+              images={CAROUSEL_PRODUCT_IMAGES_RESPONSE.map((item) => ({
+                image: item.src,
+                alt: item.alt || item.title || "",
+                title: item.title,
+                description: item.description,
+              }))}
+            />
             <KidsGiftBoxSection />
             <TestimonialSection />
             <Footer />

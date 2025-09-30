@@ -1,12 +1,25 @@
-import { Navigation } from './components';
-import Footer from './components/footer/Footer';
+'use client'
+import { useState } from 'react';
 import './globals.css';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Navigation } from '@/components';
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            staleTime: 60 * 1000,
+          },
+        },
+      })
+  );
+
   return (
     <html lang="en">
       <head>
@@ -15,12 +28,14 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
       </head>
       <body style={{ fontFamily: 'Inter, Arial, Helvetica, sans-serif' }}>
-        <div className="min-h-screen flex flex-col">
-          <Navigation />
-          <main className="flex-1">
-            {children}
-          </main>
-        </div>
+        <QueryClientProvider client={queryClient}>
+          <div className="min-h-screen flex flex-col">
+            <Navigation />
+            <main className="flex-1">
+              {children}
+            </main>
+          </div>
+        </QueryClientProvider>
       </body>
     </html>
   );
