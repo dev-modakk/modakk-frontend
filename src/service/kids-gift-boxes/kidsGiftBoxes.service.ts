@@ -40,7 +40,7 @@ export const fetchKidsGiftBoxes = async (
       // Map frontend sort values to API sort values
       const sortMap: { [key: string]: string } = {
         'featured': 'featured',
-        'newest': 'newest', 
+        'newest': 'newest',
         'price-low': 'price_asc',
         'price-high': 'price_desc',
         'rating': 'rating'

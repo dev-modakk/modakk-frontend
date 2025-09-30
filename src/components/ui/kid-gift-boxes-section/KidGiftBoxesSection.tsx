@@ -1,9 +1,11 @@
 'use client';
-import { GiftBoxesProductCard } from '@/components';
+
 import React from 'react';
 import { LuGift, LuLoader } from 'react-icons/lu';
 import { useKidsGiftBoxesHomepage } from '@/query-hooks/kids-gift-boxes/useKidsGiftBoxesQuery';
 import Link from 'next/link';
+import { GiftBoxesProductCard } from '@/components';
+
 
 export const KidsGiftBoxSection: React.FC = () => {
   const { data: giftBoxes = [], isLoading, error, refetch } = useKidsGiftBoxesHomepage();

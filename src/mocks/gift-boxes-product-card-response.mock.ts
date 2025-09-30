@@ -1,4 +1,5 @@
-import { GiftBoxProductCard } from "@/app/components";
+import { GiftBoxProductCard } from "@/components";
+
 
 export const GIFT_BOXES_PRODUCT_RESPONSE: GiftBoxProductCard[] = [
   {
